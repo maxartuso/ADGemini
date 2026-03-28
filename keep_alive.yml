@@ -1,0 +1,15 @@
+name: Streamlit Keep Alive
+
+on:
+  schedule:
+    # S'exécute toutes les 15 minutes, 24h/24
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Permet de lancer le ping manuellement pour tester
+
+jobs:
+  ping_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Request to Streamlit App
+        run: |
+          curl -L --max-redirs 5 -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0" https://adgemini.streamlit.app || true
