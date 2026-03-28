@@ -64,10 +64,13 @@ if query:
         
         # Application des instructions au modèle
         # 2. Appel au modèle Gemini (Flash 1.5 ou 2.0)
-        model_gemini = (genai.GenerativeModel('gemini-flash-latest'),
+        # model_gemini = (genai.GenerativeModel('gemini-flash-latest'),
+        #   system_instruction=INSTRUCTIONS_CONSEILLER
+        #)      
+        model_gemini = genai.GenerativeModel(
+            model_name='gemini-flash-latest', # <--- LA VIRGULE EST CRUCIALE ICI !
             system_instruction=INSTRUCTIONS_CONSEILLER
-        )      
-
+        )        
         prompt = f"""Tu es l'expert d'Autisme Diffusion (AFD). 
         Aide l'utilisateur en utilisant UNIQUEMENT ces produits :
         {contexte_produits}
