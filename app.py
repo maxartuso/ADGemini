@@ -14,8 +14,8 @@ else:
     st.error("Clé API Gemini manquante !")
     st.stop()
 
-st.set_page_config(page_title="IA Catalogue AFD (Gemini)", page_icon="🧩")
-st.title("🧩 Expert Conseil AFD via Gemini")
+st.set_page_config(page_title="IA Catalogue AFD", page_icon="🧩")
+st.title("🧩 Expert Conseil AFD")
 
 
 # --- MOTEUR DE RECHERCHE (Identique à avant) ---
