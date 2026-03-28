@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-from google import genai
-#import google.generativeai as genai
+import google.generativeai as genai
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
