@@ -52,7 +52,7 @@ if query:
             contexte_produits += f"PRODUIT: {p['nom']}\nDESC: {p['description']}\nLIEN: {p['url']}\n\n"
 
         # 2. Appel au modèle Gemini (Flash 1.5 ou 2.0)
-        model_gemini = genai.GenerativeModel('gemini-2.0-flash')
+        model_gemini = genai.GenerativeModel('gemini-1.5-flash')
 
         prompt = f"""Tu es l'expert d'Autisme Diffusion (AFD). 
         Aide l'utilisateur en utilisant UNIQUEMENT ces produits :
