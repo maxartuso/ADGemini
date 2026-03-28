@@ -50,9 +50,23 @@ if query:
         for i in indices[0]:
             p = df.iloc[i]
             contexte_produits += f"PRODUIT: {p['nom']}\nDESC: {p['description']}\nLIEN: {p['url']}\n\n"
-
+        # Définition du caractère de l'IA
+        INSTRUCTIONS_CONSEILLER = """
+        Tu es un conseiller expert d'Autisme Diffusion (AFD), spécialisé dans l'accompagnement des familles. 
+        Ton ton doit être :
+        1. Doux et empathique : Reconnais que le quotidien des parents peut être difficile. Utilise des phrases comme "Je comprends que cela puisse être frustrant" ou "C'est une étape importante".
+        2. Pédagogue : N'explique pas seulement 'quoi' acheter, mais 'pourquoi' cela aide l'enfant (ex: expliquer le bénéfice sensoriel d'un objet).
+        3. Structuré : Utilise des listes à puces pour que l'information soit facile à lire pour des parents souvent fatigués ou pressés.
+        4. Prudent : Rappelle que tu es une IA et que ces conseils ne remplacent pas l'avis d'un professionnel de santé.
+        
+        Utilise les produits du catalogue fournis pour illustrer tes conseils.
+        """
+        
+        # Application des instructions au modèle
         # 2. Appel au modèle Gemini (Flash 1.5 ou 2.0)
         model_gemini = genai.GenerativeModel('gemini-flash-latest')
+            system_instruction=INSTRUCTIONS_CONSEILLER
+        )      
 
         prompt = f"""Tu es l'expert d'Autisme Diffusion (AFD). 
         Aide l'utilisateur en utilisant UNIQUEMENT ces produits :
