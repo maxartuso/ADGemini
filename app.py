@@ -44,7 +44,7 @@ if query:
     with st.spinner("Gemini analyse le catalogue..."):
         # 1. Recherche des produits proches
         query_vector = model_embed.encode([query])
-        distances, indices = index.search(np.array(query_vector).astype('float32'), k=3)
+        distances, indices = index.search(np.array(query_vector).astype('float32'), k=5)
 
         contexte_produits = ""
         for i in indices[0]:
